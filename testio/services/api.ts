@@ -1,4 +1,4 @@
-const API_BASE_URL = process.env.EXPO_PUBLIC_API_URL || 'http://localhost:8080/api';
+const API_BASE_URL = process.env.EXPO_PUBLIC_API_URL || 'https://kendini-bul-production.up.railway.app';
 
 export interface Test {
   id: string;
