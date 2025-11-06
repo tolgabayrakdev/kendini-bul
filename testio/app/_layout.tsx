@@ -14,9 +14,27 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
+      <Stack
+        screenOptions={{
+          headerBackTitle: 'Geri',
+        }}>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: 'modal', title: 'Modal' }} />
+        <Stack.Screen 
+          name="test/[id]" 
+          options={{ 
+            headerShown: false,
+            title: '',
+            headerBackTitle: 'Geri',
+          }} 
+        />
+        <Stack.Screen 
+          name="result" 
+          options={{ 
+            headerShown: false,
+            headerBackTitle: 'Geri',
+          }} 
+        />
+        <Stack.Screen name="modal" options={{ presentation: 'modal', title: 'Modal', headerBackTitle: 'Geri' }} />
       </Stack>
       <StatusBar style="auto" />
     </ThemeProvider>

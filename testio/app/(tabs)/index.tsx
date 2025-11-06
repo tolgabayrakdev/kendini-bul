@@ -9,6 +9,7 @@ import {
 import { useRouter } from 'expo-router';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
+import { Text } from 'react-native';
 import { api, Test } from '@/services/api';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { Colors } from '@/constants/theme';
@@ -98,9 +99,9 @@ export default function HomeScreen() {
               ]}
               onPress={() => router.push(`/test/${test.id}`)}>
               <ThemedView style={styles.testCardContent}>
-                <ThemedText style={styles.testEmoji}>
+                <Text style={styles.testEmoji}>
                   {getEmoji(index)}
-                </ThemedText>
+                </Text>
                 <ThemedView style={styles.testInfo}>
                   <ThemedText type="defaultSemiBold" style={styles.testTitle}>
                     {test.title}

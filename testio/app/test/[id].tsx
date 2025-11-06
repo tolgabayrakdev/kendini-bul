@@ -24,6 +24,7 @@ export default function TestScreen() {
 
   useEffect(() => {
     loadTest();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
   const loadTest = async () => {
@@ -42,15 +43,14 @@ export default function TestScreen() {
     const newAnswers = [...answers];
     newAnswers[currentQuestion] = answerIndex;
     setAnswers(newAnswers);
+  };
 
-    // Auto advance to next question after a short delay
-    setTimeout(() => {
-      if (currentQuestion < test!.questions.length - 1) {
-        setCurrentQuestion(currentQuestion + 1);
-      } else {
-        submitTest();
-      }
-    }, 300);
+  const handleNext = () => {
+    if (currentQuestion < test!.questions.length - 1) {
+      setCurrentQuestion(currentQuestion + 1);
+    } else {
+      submitTest();
+    }
   };
 
   const submitTest = async () => {
@@ -140,22 +140,24 @@ export default function TestScreen() {
       </ScrollView>
 
       <ThemedView style={styles.footer}>
-        {currentQuestion > 0 && (
-          <TouchableOpacity
-            style={styles.navButton}
-            onPress={goToPrevious}>
-            <ThemedText style={styles.navButtonText}>← Önceki</ThemedText>
-          </TouchableOpacity>
-        )}
-        {isLastQuestion && hasAnswer && (
-          <TouchableOpacity
-            style={[styles.navButton, styles.submitButton]}
-            onPress={submitTest}>
-            <ThemedText style={[styles.navButtonText, styles.submitButtonText]}>
-              Sonucu Gör →
-            </ThemedText>
-          </TouchableOpacity>
-        )}
+        <ThemedView style={styles.footerButtons}>
+          {currentQuestion > 0 && (
+            <TouchableOpacity
+              style={styles.navButton}
+              onPress={goToPrevious}>
+              <ThemedText style={styles.navButtonText}>← Önceki</ThemedText>
+            </TouchableOpacity>
+          )}
+          {hasAnswer && (
+            <TouchableOpacity
+              style={[styles.navButton, styles.nextButton, !currentQuestion && styles.nextButtonOnly]}
+              onPress={handleNext}>
+              <ThemedText style={[styles.navButtonText, styles.nextButtonText]}>
+                {isLastQuestion ? 'Bitir →' : 'Devam →'}
+              </ThemedText>
+            </TouchableOpacity>
+          )}
+        </ThemedView>
       </ThemedView>
     </ThemedView>
   );
@@ -238,28 +240,36 @@ const styles = StyleSheet.create({
     color: '#4ECDC4',
   },
   footer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
     padding: 20,
     borderTopWidth: 1,
     borderTopColor: 'rgba(0,0,0,0.1)',
   },
+  footerButtons: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    gap: 12,
+  },
   navButton: {
-    paddingVertical: 12,
-    paddingHorizontal: 24,
+    paddingVertical: 10,
+    paddingHorizontal: 16,
     borderRadius: 8,
     backgroundColor: 'rgba(0,0,0,0.05)',
+    minWidth: 100,
   },
   navButtonText: {
-    fontSize: 16,
+    fontSize: 14,
   },
-  submitButton: {
+  nextButton: {
     backgroundColor: '#4ECDC4',
+    minWidth: 100,
+  },
+  nextButtonOnly: {
     marginLeft: 'auto',
   },
-  submitButtonText: {
+  nextButtonText: {
     color: '#fff',
     fontWeight: '600',
+    fontSize: 14,
   },
 });
 

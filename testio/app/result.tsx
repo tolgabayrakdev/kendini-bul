@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   Share,
   View,
+  Text,
 } from 'react-native';
 import { useRouter, useLocalSearchParams } from 'expo-router';
 import { ThemedText } from '@/components/themed-text';
@@ -87,7 +88,7 @@ export default function ResultScreen() {
             styles.resultCard,
             { backgroundColor: cardColor + '20', borderColor: cardColor },
           ]}>
-          <ThemedText style={styles.resultEmoji}>{emoji}</ThemedText>
+          <Text style={styles.resultEmoji}>{emoji}</Text>
           <ThemedText type="title" style={styles.resultTitle}>
             {params.resultTitle}
           </ThemedText>

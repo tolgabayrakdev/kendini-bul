@@ -9,6 +9,7 @@ import {
 import { useRouter } from 'expo-router';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
+import { Text } from 'react-native';
 import { api, Test } from '@/services/api';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { Colors } from '@/constants/theme';
@@ -99,9 +100,9 @@ export default function ExploreScreen() {
               ]}
               onPress={() => router.push(`/test/${randomTest.id}`)}>
               <ThemedView style={styles.randomTestContent}>
-                <ThemedText style={styles.randomTestEmoji}>
+                <Text style={styles.randomTestEmoji}>
                   {getEmoji(0)}
-                </ThemedText>
+                </Text>
                 <ThemedView style={styles.randomTestInfo}>
                   <ThemedText type="defaultSemiBold" style={styles.randomTestTitle}>
                     {randomTest.title}
@@ -137,9 +138,9 @@ export default function ExploreScreen() {
                 ]}
                 onPress={() => router.push(`/test/${test.id}`)}>
                 <ThemedView style={styles.testCardContent}>
-                  <ThemedText style={styles.testEmoji}>
+                  <Text style={styles.testEmoji}>
                     {getEmoji(index + 1)}
-                  </ThemedText>
+                  </Text>
                   <ThemedView style={styles.testInfo}>
                     <ThemedText type="defaultSemiBold" style={styles.testTitle}>
                       {test.title}

@@ -2,7 +2,6 @@ import express from "express";
 import cors from "cors";
 import morgan from "morgan";
 import dotenv from "dotenv";
-import pool from "./config/database.js";
 import testRoutes from "./routes/testRoutes.js";
 import resultRoutes from "./routes/resultRoutes.js";
 
