@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "testio",
+    "name": "Testio",
     "slug": "testio",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -9,9 +9,13 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.testio.app",
+      "buildNumber": "1"
     },
     "android": {
+      "package": "com.testio.app",
+      "versionCode": 1,
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
         "foregroundImage": "./assets/images/android-icon-foreground.png",
